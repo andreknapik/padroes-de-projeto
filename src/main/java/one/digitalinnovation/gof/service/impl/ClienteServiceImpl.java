@@ -2,13 +2,10 @@ package one.digitalinnovation.gof.service.impl;
 
 import java.util.Optional;
 
+import one.digitalinnovation.gof.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import one.digitalinnovation.gof.model.Cliente;
-import one.digitalinnovation.gof.model.ClienteRepository;
-import one.digitalinnovation.gof.model.Endereco;
-import one.digitalinnovation.gof.model.EnderecoRepository;
 import one.digitalinnovation.gof.service.ClienteService;
 import one.digitalinnovation.gof.service.ViaCepService;
 
@@ -64,6 +61,18 @@ public class ClienteServiceImpl implements ClienteService {
 	public void deletar(Long id) {
 		// Deletar Cliente por ID.
 		clienteRepository.deleteById(id);
+	}
+
+	private final ClienteFactory clienteFactory;
+
+	public ClienteServiceImpl(ClienteFactory clienteFactory) {
+		this.clienteFactory = clienteFactory;
+	}
+
+	@Override
+	public Iterable<Cliente> buscarTodos() {
+		// Lógica para buscar todos os clientes
+		// Use clienteFactory para criar instâncias de Cliente conforme necessário
 	}
 
 	private void salvarClienteComCep(Cliente cliente) {
